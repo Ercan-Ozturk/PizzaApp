@@ -6,14 +6,14 @@ const menu = [
   { name: "Hawaiian", price: 10 },
 ];
 
-const cashInRegister = 100;
-const orderQueue = [];
-var orderID = 1;
-function addNewPizza(name, price) {
+var cashInRegister: number = 100;
+const orderQueue: any[] = [];
+var orderID: number = 1;
+function addNewPizza(name: string, price: number) {
   menu.push({ name, price });
 }
 
-function placeOrder(pizzaName) {
+function placeOrder(pizzaName: string) {
   const pizza = menu.find((p) => p.name === pizzaName);
   const newOrder = { pizza, orderID, status: "pending" };
   if (pizza) {
