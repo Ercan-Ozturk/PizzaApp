@@ -5,3 +5,35 @@ const menu = [
   { name: "BBQ Chicken", price: 11 },
   { name: "Hawaiian", price: 10 },
 ];
+
+const cashInRegister = 100;
+const orderQueue = [];
+var orderID = 1;
+function addNewPizza(name, price) {
+  menu.push({ name, price });
+}
+
+function placeOrder(pizzaName) {
+  const pizza = menu.find((p) => p.name === pizzaName);
+  const newOrder = { pizza, orderID, status: "pending" };
+  if (pizza) {
+    orderQueue.push(newOrder);
+    orderID++;
+  }
+  return pizza ? `Order placed for ${pizzaName}` : "Pizza not found";
+}
+function completeOrder() {
+  if (orderQueue.length > 0) {
+    const completedOrder = orderQueue.shift();
+    completedOrder.status = "completed";
+    return `Order for ${completedOrder.pizza.name} completed`;
+  }
+}
+
+addNewPizza("Four Cheese", 12);
+console.log(placeOrder("Pepperoni"));
+console.log(placeOrder("Four Cheese"));
+console.log(completeOrder());
+console.log(completeOrder());
+console.log(cashInRegister);
+console.log(menu);
