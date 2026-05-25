@@ -13,9 +13,10 @@ var orderID: number = 1;
 
 var cashInRegister: number = 100;
 
-function addNewPizza(pizza: Pizza): void {
-  pizza.id = nextPizzaID++;
-  menu.push(pizza);
+function addNewPizza(pizza: Omit<Pizza, "id">): Pizza {
+  const newPizza: Pizza = { id: nextPizzaID++, ...pizza };
+  menu.push(newPizza);
+  return newPizza;
 }
 
 function placeOrder(pizzaName: string): string {
