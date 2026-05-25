@@ -48,6 +48,10 @@ function getPizzaDetail(identifier: number | string): Pizza | undefined {
     return menu.find((pizza) => pizza.name === identifier);
   }
 }
+function addToArray<T>(array: T[], item: T): T[] {
+  array.push(item);
+  return array;
+}
 addNewPizza({ name: "Four Cheese", price: 12 } as Pizza);
 console.log(placeOrder("Pepperoni"));
 console.log(placeOrder("Four Cheese"));
